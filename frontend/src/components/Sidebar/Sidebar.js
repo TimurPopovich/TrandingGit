@@ -15,6 +15,10 @@ function Sidebar() {
     divSidebar.current.classList.toggle('active')
   }
 
+  const logoClick = () => {
+    history.push('/')
+  }
+
   const logOut = () => {
     dispatch({ type: "USER_LOGOUT" })
     history.push('/')
@@ -23,20 +27,13 @@ function Sidebar() {
   return (
     <div ref={divSidebar} className="sidebar">
       <div className='logo_content'>
-        <div className='logo'>
-          {/* <i className='bx bxl-react'></i> */}
+        <div onClick={logoClick} className='logo'>
           <img className="logo_git" alt='' src='favicon.ico'></img>
           <div className='logo_name'>Tranding Git</div>
         </div>
         <i className='bx bx-menu' id='btn' onClick={sidebarClick}></i>
       </div>
       <ul>
-        {/* <li>
-          <a href='#' id='search'>
-            <i className='bx bx-search'></i>
-            <input placeholder='Search...'></input>
-          </a>
-        </li> */}
         <li>
           <Link to='/'>
             <i className='bx bx-grid-alt' ></i>
@@ -85,10 +82,8 @@ function Sidebar() {
         <div className='profile_content'>
           <div className='profile'>
             <div className='profile_details'>
-              {/* <img alt='foto_profile' src='avatar.jpg'></img> */}
               <div className='name_job'>
                 <div className='name'>{user.email}</div>
-                {/* <div className='job'>Frontend Developer</div> */}
               </div>
             </div>
 
