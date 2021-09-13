@@ -2,6 +2,8 @@ const router = require("express").Router();
 const User = require("../models/user.model");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv');
+dotenv.config();
 
 router.post("/", async (req, res) => {
   const { email, password } = req.body.logInfo;
@@ -14,7 +16,7 @@ router.post("/", async (req, res) => {
 
     if (user && isTruePassword) {
 
-      const token = await jwt.sign({ id }, 'secret', {
+      const token = await jwt.sign({ id }, process.env.SECRET_KEY, {
         expiresIn: "5 days",
       });
 
