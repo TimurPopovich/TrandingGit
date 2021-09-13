@@ -38,15 +38,6 @@
   z-index: 1001;
   transition: all 0.6s ease;
 }
-@media only screen 
-  and (min-device-width: 200px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: portrait) { 
-  .sidebar.active ~ #home_content .backDiv{
-    left: 78px;
-  }
-}
 .sidebar.active ~ .home_content .backDiv{
   left: 240px;
 }
@@ -106,7 +97,7 @@
 }
 .form-group {
   position:relative;  
-    margin-top: 30px;
+  margin-top: 30px;
 }
 .form-wrapper {
   max-width: 30%;
@@ -163,15 +154,66 @@
   transition: transform 0.15s ease 0s, opacity 0.15s ease 0s;
   transform: scale(1);
 }
+.sidebar.active ~ .home_content .hystmodal{
+  left: 240px;
+}
 @media only screen 
-  and (min-device-width: 200px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: portrait) { 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) { 
   .sidebar.active ~ #home_content .hystmodal{
     left: 78px;
   }
+  .sidebar.active ~ #home_content .backDiv{
+    left: 78px;
+  }
 }
-.sidebar.active ~ .home_content .hystmodal{
-  left: 240px;
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .sidebar.active ~ #home_content .hystmodal{
+      left: 78px;
+    }
+    .sidebar.active ~ #home_content .backDiv{
+      left: 78px;
+    }
+}
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .sidebar.active ~ #home_content .hystmodal{
+      left: 78px;
+    }
+    .sidebar.active ~ #home_content .backDiv{
+      left: 78px;
+    }
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    .sidebar.active ~ #home_content .hystmodal{
+      left: 78px;
+    }
+    .sidebar.active ~ #home_content .backDiv{
+      left: 78px;
+    }
+}
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+    .sidebar.active ~ #home_content .hystmodal{
+      left: 78px;
+    }
+    .sidebar.active ~ #home_content .backDiv{
+      left: 78px;
+    }
 }

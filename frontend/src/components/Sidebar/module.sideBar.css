@@ -14,22 +14,6 @@
   z-index: 1000;
 
 }
-@media only screen 
-  and (min-device-width: 200px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: portrait) { 
-  .sidebar{
-    z-index: 1000;
-  }
-  .sidebar.active{
-    z-index: 1000;
-  }
-  .sidebar.active ~ #home_content{
-    width: calc(100% - 78px);
-    left: 78px;
-  }
-}
 .sidebar .logo_content .logo{
   color: #fff;
   display: flex;
@@ -155,10 +139,10 @@
   text-align: center;
 }
 .sidebar ul li a span{
-visibility: hidden;
+  visibility: hidden;
 }
 .sidebar.active ul li a span{
-visibility: visible;
+  visibility: visible;
 }
 .sidebar .profile_content{
   position: absolute;
@@ -193,7 +177,7 @@ visibility: visible;
   text-overflow: ellipsis;
 }
 .profile .profile_details .job{
-font-size: 12px;
+  font-size: 12px;
 }
 .profile .profile_details img{
   width: 45px;
@@ -214,6 +198,86 @@ font-size: 12px;
 }
 .sidebar.active #log_out{
   left: 88%;
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+  .sidebar{
+    z-index: 1000;
+  }
+  .sidebar.active{
+    z-index: 1000;
+  }
+  .sidebar.active ~ #home_content{
+    width: calc(100% - 78px);
+    left: 78px;
+  }
+}
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .sidebar{
+      z-index: 1000;
+    }
+    .sidebar.active{
+      z-index: 1000;
+    }
+    .sidebar.active ~ #home_content{
+      width: calc(100% - 78px);
+      left: 78px;
+    }
+}
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .sidebar{
+      z-index: 1000;
+    }
+    .sidebar.active{
+      z-index: 1000;
+    }
+    .sidebar.active ~ #home_content{
+      width: calc(100% - 78px);
+      left: 78px;
+    }
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    .sidebar{
+      z-index: 1000;
+    }
+    .sidebar.active{
+      z-index: 1000;
+    }
+    .sidebar.active ~ #home_content{
+      width: calc(100% - 78px);
+      left: 78px;
+    }
+}
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+    .sidebar{
+      z-index: 1000;
+    }
+    .sidebar.active{
+      z-index: 1000;
+    }
+    .sidebar.active ~ #home_content{
+      width: calc(100% - 78px);
+      left: 78px;
+    }
 }
 
 
