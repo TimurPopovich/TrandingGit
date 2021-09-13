@@ -1,0 +1,177 @@
+#newDataPerson{
+  cursor: pointer;
+  background-color: #b700fa;
+  width:70%;
+  margin: 10px auto;
+  height: 30px;
+  font-size:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-radius: 12px;
+  border:none;
+  transition: all 0.5s ease;
+}
+.backDiv{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 78px;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  z-index: 999;
+  pointer-events: all;
+  transition: opacity0 .2s ease-in;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s ease;
+}
+#editDiv{
+  background-color: #fff;
+  width: 40%;
+  border-radius: 12px;
+  z-index: 1001;
+  transition: all 0.6s ease;
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+  .sidebar.active ~ #home_content .backDiv{
+    left: 78px;
+  }
+}
+.sidebar.active ~ .home_content .backDiv{
+  left: 240px;
+}
+#h2Edit{
+  margin: 20px 0 ;
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+#newDataPerson2{
+  cursor: pointer;
+  background-color: #f80101;
+  width:70%;
+  margin: 10px auto;
+  height: 30px;
+  font-size:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-radius: 12px;
+  border:none;
+  transition: all 0.5s ease;
+}
+.form-label{
+  position: absolute;
+  background: none;
+  border-radius: 12px;
+  left: 0;
+  top: 7px;
+  color: #999;
+  background-color: #fff;
+  z-index: 10;
+  transition: transform 150ms ease-out, font-size 150ms ease-out;
+  font-size: .85em;
+  transform-origin: top left;
+  margin-left:5px ;
+  transition: all 0.2s ease-out;
+  pointer-events: none;
+}
+.form-label.focus{
+  transform: translateY(-175%);
+  font-size: .65em;
+}
+.form-control{
+  position: relative;
+  border-radius: 12px;
+  padding: 8px 0px 8px 4px;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 1px 0 0 #e5e5e5;
+  transition: box-shadow 150ms ease-out;
+}
+.form-control:focus{
+  box-shadow: 0 3px 8px 0 #e5e5e5;
+}
+.form-group {
+  position:relative;  
+    margin-top: 30px;
+}
+.form-wrapper {
+  max-width: 30%;
+  min-width: 300px;
+  padding: 50px 30px 50px 30px;
+  margin: 50px auto;   
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+}
+.newDataPerson2{
+  cursor: pointer;
+  background-color: #f80101;
+  width:70%;
+  margin: 10px auto;
+  height: 30px;
+  font-size:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-radius: 12px;
+  border:none;
+  transition: all 0.5s ease;
+}
+.hystmodal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 78px;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  z-index: 999;
+  pointer-events: all;
+  transition: opacity0 .2s ease-in;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s ease;
+}
+.hystmodal__window {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 30%;
+  min-width: 300px;
+  padding: 50px 30px 50px 30px;
+  margin: 50px auto;   
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+  transition: transform 0.15s ease 0s, opacity 0.15s ease 0s;
+  transform: scale(1);
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+  .sidebar.active ~ #home_content .hystmodal{
+    left: 78px;
+  }
+}
+.sidebar.active ~ .home_content .hystmodal{
+  left: 240px;
+}

@@ -1,0 +1,82 @@
+.Onecard{
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #21ba45, 0 1px 3px 0 #d4d4d5;
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none; 
+}
+.Onecard:hover{
+  transition-duration: 1000ms;
+  transform:translateY(-10px);
+}
+.uiImg{
+  width: 35px;
+  height: auto;
+  float: right;
+  border-radius: 2px;
+}
+#containerCard,#containerCardProfile{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 3rem;
+}
+.cardHeader{
+  font-weight:bolder;
+  font-size: 17px;
+  word-wrap: break-word;
+  overflow-x:hidden;
+}
+.cardNick{
+  font-size: 1em;
+  color: rgba(0,0,0,.4);
+  word-wrap: break-word;
+  overflow-x:hidden;
+}
+.cardBody{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  word-wrap: break-word;
+  overflow-x:hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+}
+.cardBody::-webkit-scrollbar {
+  width: 0;
+}
+#btnAdd,#btnDelete{
+  background-color: #00ffd5;
+  width: 95px;
+  height: 30px;
+  font-size:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-radius: 12px;
+  border:none;
+  margin: 5px 0;
+  transition: all 0.5s ease;
+}
+#btnAdd{
+  cursor:grab;
+}
+#btnDelete{
+  background-color: rgb(255, 3, 3);
+  cursor: grab;
+}
+.btnAdd_Delete{
+  display: flex;
+  justify-content: center;
+}
+p{
+  margin: 0 0 0;
+}

@@ -1,0 +1,66 @@
+.is-center {
+  text-align: center;
+}
+.ui{
+  cursor: text;
+  width: 100%;
+  display: block;
+  margin: 1rem 0;
+}
+#uiContainer{
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.uiInputContainer,.uiInputContainerProfile{
+  position: relative;
+  margin: 3rem;
+  padding: 1rem;
+}
+.inputAll{
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+  border: none;
+}
+.inputAll:focus  {
+  outline: none;
+}
+.textContent{
+margin-top: 18px;
+}
+.languagePrograming{
+  display: flex;
+  flex-wrap: wrap;
+}
+#containerBtnSearch{
+  display: flex;
+  justify-content: center;
+}
+#btnSearch{
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px 10px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #06f8d0 0%, #4830F0 51%, #00ffd5 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  border: none;
+  transition: .5s;
+}
+#btnSearch:hover{
+  background-position: right center;
+}
+#btnSearch:focus,
+#btnSearch:active {
+  -webkit-transform: scale(1.5, 1.5);
+  transform: scale(1.5, 1.5);
+  opacity: 0.1;
+  visibility: hidden;
+  transition: .7s;
+}
