@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/TimurPopovich/TrandingGit/issues"
   },
-  "homepage": "https://github.com/TimurPopovich/TrandingGit#readme"
+  "homepage": "https://github.com/TimurPopovich/TrandingGit#readme",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  }
 }
