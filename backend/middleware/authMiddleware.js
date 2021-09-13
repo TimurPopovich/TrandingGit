@@ -6,7 +6,7 @@ module.exports = authMiddleware = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: 'Auth error' });
     } else {
-      const decoded = await jwt.verify(token, 'secret')
+      const decoded = await jwt.verify(token, process.env.SECRET_KEY)
       req.user = decoded;
       next();
     }
