@@ -21,13 +21,13 @@
   width: 100%;
   align-items: center;
   opacity: 0;
-  pointer-events: none;
   transition: all 0.6s ease;
   white-space: nowrap;
+  cursor: pointer;
 }
 .sidebar.active .logo_content .logo{
   opacity: 1;
-  pointer-events: none;
+  cursor: pointer;
 } 
 .logo_content .logo i{
   font-size: 28px;
@@ -140,9 +140,11 @@
 }
 .sidebar ul li a span{
   visibility: hidden;
+  display: none;
 }
 .sidebar.active ul li a span{
   visibility: visible;
+  display: block;
 }
 .sidebar .profile_content{
   position: absolute;
