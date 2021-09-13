@@ -27,7 +27,7 @@ function Sidebar() {
   return (
     <div ref={divSidebar} className="sidebar">
       <div className='logo_content'>
-        <div onClick={logoClick} className='logo'>
+        <div onClick={() => logoClick()} className='logo'>
           <img className="logo_git" alt='' src='favicon.ico'></img>
           <div className='logo_name'>Tranding Git</div>
         </div>
