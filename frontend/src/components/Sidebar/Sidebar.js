@@ -20,6 +20,7 @@ function Sidebar() {
   }
 
   const logoClick = () => {
+    divSidebar.current.classList.remove('active')
     history.push('/')
   }
 
