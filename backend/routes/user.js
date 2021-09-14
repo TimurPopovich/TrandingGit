@@ -27,10 +27,10 @@ router.put('/', async (req, res) => {
     if (findUnicEmail === null) {
       findUser.email = info.email
       await findUser.save()
+    } else {
+      return res.json({ status: 'Почта занята' })
     }
-    if (findUnicEmail !== null && findUnicEmail?._id.toString() !== info.id) {
-     return res.json({ status: 'Почта занята' })
-    }
+    
   }
 
   res.json({ status: true })
