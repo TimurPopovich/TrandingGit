@@ -70,6 +70,16 @@ function EditProfile() {
     }
   }
 
+  function handleTextFocus2() {
+    setActive(true);
+  }
+
+  function handleTextBlur2(text) {
+    if (text === '') {
+      setActive(false);
+    }
+  }
+
   return (
     <div id="editContainerProfile">
 
@@ -90,7 +100,7 @@ function EditProfile() {
 
             <div className="form-group">
               <label htmlFor="exampleInputPass" className={active2 ? "focus form-label" : "form-label"}>Пароль</label>
-              <input onChange={(e) => handleTextChange2(e.target.value)} autoComplete='new-password' value={value2} name="password" type="password" className="form-control" id="exampleInputPassword1" />
+              <input onFocus={() => handleTextFocus2()} onBlur={(e) => { handleTextBlur2(e.target.value) }} onChange={(e) => handleTextChange2(e.target.value)} autoComplete='new-password' value={value2} name="password" type="password" className="form-control" id="exampleInputPassword1" />
             </div>
 
             <button id="newDataPerson" type="submit" className="btn btn-primary">Изменить</button>
