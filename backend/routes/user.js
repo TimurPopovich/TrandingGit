@@ -30,10 +30,10 @@ router.put('/', async (req, res) => {
     } else {
       return res.json({ status: 'Почта занята' })
     }
-    
+
   }
 
-  res.json({ status: true })
+  res.json({ status: true, email: info.email })
 
 })
 
