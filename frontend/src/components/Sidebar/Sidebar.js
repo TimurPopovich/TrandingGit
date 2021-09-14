@@ -15,6 +15,10 @@ function Sidebar() {
     divSidebar.current.classList.toggle('active')
   }
 
+  const linkClick = () => {
+    divSidebar.current.classList.remove('active')
+  }
+
   const logoClick = () => {
     history.push('/')
   }
@@ -33,7 +37,7 @@ function Sidebar() {
         </div>
         <i className='bx bx-menu' id='btn' onClick={sidebarClick}></i>
       </div>
-      <ul onClick={sidebarClick}>
+      <ul onClick={linkClick}>
         <li>
           <Link to='/'>
             <i className='bx bx-grid-alt' ></i>
