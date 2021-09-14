@@ -30,7 +30,7 @@ export const editProfileThunk = (info, history, setModalActive, setModalInfo) =>
           return data
         }
       })
-      .then((data) => dispatch({ type: 'EDIT_USER', payload: data }))
+      .then((data) => dispatch({ type: 'EDIT_USER', payload: info.email }))
       .catch((error) => {
         alert(`${error.message}`)
       });
