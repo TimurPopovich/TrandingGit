@@ -23,13 +23,13 @@ router.put('/', async (req, res) => {
   if (info.email) {
 
     const findUnicEmail = await User.findOne({ email: info.email })
-    console.log(findUnicEmail);
+
     if (findUnicEmail === null) {
       findUser.email = info.email
       await findUser.save()
     }
     if (findUnicEmail !== null && findUnicEmail?._id.toString() !== info.id) {
-      res.json({ status: 'Почта занята' })
+     return res.json({ status: 'Почта занята' })
     }
   }
 
