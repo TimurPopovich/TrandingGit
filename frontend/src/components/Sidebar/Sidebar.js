@@ -33,7 +33,7 @@ function Sidebar() {
         </div>
         <i className='bx bx-menu' id='btn' onClick={sidebarClick}></i>
       </div>
-      <ul>
+      <ul onClick={sidebarClick}>
         <li>
           <Link to='/'>
             <i className='bx bx-grid-alt' ></i>
