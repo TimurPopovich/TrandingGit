@@ -50,6 +50,16 @@ function EditProfile() {
     }
   }
 
+  function handleTextFocus() {
+    setActive(true);
+  }
+
+  function handleTextBlur(text) {
+    if (text === '') {
+      setActive(false);
+    }
+  }
+
   function handleTextChange2(text) {
     setValue2(text);
 
@@ -71,15 +81,9 @@ function EditProfile() {
 
           <form onSubmit={(e) => { formHandler(e) }} id="editForm" autoComplete='off' >
 
-            {/* <div class="mb-3">
-    <label for="exampleInputName" class="form-label">Логин</label>
-    <input name="name" type="text" class="form-control" id="exampleInputName" aria-describedby="NameHelp" />
-    <div id="namelHelp" class="form-text">Введите новый Логин</div>
-  </div> */}
-
             <div className="form-group">
               <label htmlFor="exampleInputEmail" className={active ? "focus form-label" : "form-label"}>Почта</label>
-              <input onChange={(e) => handleTextChange(e.target.value)} autoComplete='new-password' value={value} name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input onFocus={() => handleTextFocus()} onBlur={(e) => { handleTextBlur(e.target.value) }} onChange={(e) => handleTextChange(e.target.value)} autoComplete='new-password' value={value} name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
 
             <br />
