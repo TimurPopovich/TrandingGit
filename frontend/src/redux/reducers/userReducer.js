@@ -12,6 +12,8 @@ function userReducer(state = initialState, action) {
     case 'USER_LOGOUT':
       localStorage.removeItem('token');
       return initialState
+    case 'EDIT_USER':
+      return { ...state, email: action.payload.email }
     case 'SAVE_CARD':
       return { ...state, interes: [...state.interes, action.payload] }
     case 'DELETE_CARD':

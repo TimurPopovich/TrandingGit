@@ -15,6 +15,12 @@ export const editProfileThunk = (info, history, setModalActive, setModalInfo) =>
           setTimeout(() => {
             setModalActive(false)
           }, 3000)
+        } else if (data.status && data.status === 'Почта занята') {
+          setModalActive(true)
+          setModalInfo({ message: data.status, status: 'Ошибка' })
+          setTimeout(() => {
+            setModalActive(false)
+          }, 3000)
         } else {
           setModalActive(true)
           setModalInfo({ status: 'Выполнено' })
@@ -24,7 +30,7 @@ export const editProfileThunk = (info, history, setModalActive, setModalInfo) =>
           return data
         }
       })
-      // .then((data) => dispatch({ type: 'EDIT_USER', payload: data }))
+      .then((data) => dispatch({ type: 'EDIT_USER', payload: data }))
       .catch((error) => {
         alert(`${error.message}`)
       });
