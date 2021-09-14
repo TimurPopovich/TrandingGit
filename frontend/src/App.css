@@ -169,7 +169,7 @@ input:-webkit-autofill {
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
     #wrapper{
-      width: 80%;
+      width: 89%;
       overflow: visible;
     }
     #signin  input[type="text"], #signin  input[type="password"]{
@@ -195,7 +195,6 @@ input:-webkit-autofill {
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) { 
     #wrapper{
-      width: 80%;
       overflow: visible;
     }
     #signin  input[type="text"], #signin  input[type="password"]{
