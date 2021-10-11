@@ -241,7 +241,7 @@ function HomeContent() {
 
     mainTrand()
 
-  }, [array, language])
+  }, [])
 
   return (
     <div id="uiContainer">
