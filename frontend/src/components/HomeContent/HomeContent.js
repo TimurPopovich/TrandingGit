@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import autoComplete from '@tarekraafat/autocomplete.js'
 import DownloadVisual from '../DownloadVisual/DownloadVisual'
 import OneCard from '../OneCard/OneCard'
+import { useDispatch, useSelector } from 'react-redux'
 import './module.homeContent.css'
 
 function HomeContent() {
@@ -11,7 +12,10 @@ function HomeContent() {
   const languagePrograming = useRef()
   const period = useRef()
 
-  const [array, setArray] = useState([])
+  const search = useSelector(state => state.user.search)
+  const status = useSelector(state => state.user.statusSearch)
+  const dispatch = useDispatch()
+
   const [statusSearch, setStatusSearch] = useState(true)
   const [language, setLanguage] = useState([])
 
@@ -24,14 +28,25 @@ function HomeContent() {
 
     if (result.length === 0 || result === 'Unknown language') {
       setStatusSearch(false)
-    } else setArray([...result])
+    } else dispatch({ type: 'INIT_SEARCH', payload: result })
 
+  }
+
+  async function mainTrand() {
+
+    setStatusSearch(true)
+
+    const response = await fetch(`https://api.trending-github.com/github/repositories?language=&period=&spokenLanguage=`);
+
+    const result = await response.json();
+
+    return result
   }
 
   function submitBtn(event) {
 
     setStatusSearch(true)
-    setArray([])
+    dispatch({ type: 'INIT_SEARCH', payload: [] })
 
     event.preventDefault();
 
@@ -67,181 +82,203 @@ function HomeContent() {
 
   }
 
-  useEffect(() => {
-    async function spokenLanguageFunc() {
+  async function deleteBtn(event) {
 
-      const response = await fetch('/infoGit');
+    event.preventDefault()
 
-      if (window.location.pathname === '/') {
+    languagePrograming.current.value = ''
+    period.current.value = ''
+    spokenLanguageSymbol.current.value = ''
 
-        const result = await response.json();
 
-        setLanguage([...result.spokenLanguage])
+    dispatch({ type: 'INIT_SEARCH', payload: [] })
 
-        const autoCompleteJS1 = new autoComplete({
-          placeHolder: "Выберите свой язык...",
-          data: {
-            src: result.spokenLanguage,
-            cache: true,
-            keys: ['language'],
-          },
-          resultsList: {
-            element: (list, data) => {
-              if (!data.results.length) {
-                // Создание элемента нет результатов
-                const message = document.createElement("div");
-                // Добавление к нему класса
-                message.setAttribute("className", "no_result");
-                // Добавляем текстовое сообщение
-                message.innerHTML = `<span> Не найдено соответствий для "${data.query}"</span>`;
-                // Добавляем в лист результатов
-                list.prepend(message);
-              }
-            },
-            noResults: true,
-            tabSelect: true,
-          },
-          resultItem: {
-            highlight: true,
-          },
-          events: {
-            input: {
-              focus: () => {
-                if (autoCompleteJS1.input.value.length) {
-                  autoCompleteJS1.start()
-                };
-              }
-            }
-          }
-        });
+    const result = await mainTrand()
 
-        autoCompleteJS1.input.addEventListener("selection", function (event) {
-          const feedback = event.detail;
+    if (result.length !== 0) dispatch({ type: 'INIT_SEARCH', payload: result })
+    if (result.length === 0) setStatusSearch(false)
+  }
 
-          autoCompleteJS1.input.blur();
+  async function spokenLanguageFunc(cleanupFunction) {
 
-          const selection = feedback.selection.value[feedback.selection.key];
+    const response = await fetch('/infoGit');
 
-          autoCompleteJS1.input.value = selection;
-        });
-
-        const autoCompleteJS2 = new autoComplete({
-          placeHolder: "Язык программирования...",
-          data: {
-            src: result.language,
-            cache: true,
-          },
-          selector: "#autoComplete2",
-          resultsList: {
-            element: (list, data) => {
-              if (!data.results.length) {
-                // Create "No Results" message element
-                const message = document.createElement("div");
-                // Add class to the created element
-                message.setAttribute("class", "no_result");
-                // Add message text content
-                message.innerHTML = `<span> Не найдено соответствий для "${data.query}"</span>`;
-                // Append message element to the results list
-                list.prepend(message);
-              }
-            },
-            noResults: true,
-            tabSelect: true,
-          },
-          resultItem: {
-            highlight: true
-          },
-          events: {
-            input: {
-              focus: () => {
-                if (autoCompleteJS2.input.value.length) {
-                  autoCompleteJS2.start()
-                };
-              }
-            }
-          }
-        });
-
-        autoCompleteJS2.input.addEventListener("selection", function (event) {
-          const feedback = event.detail;
-
-          autoCompleteJS2.input.blur();
-
-          const selection = feedback.selection.value;
-
-          autoCompleteJS2.input.value = selection;
-        });
-
-        const autoCompleteJS3 = new autoComplete({
-          placeHolder: "Время поиска...",
-          data: {
-            src: ['daily', 'weekly', 'monthly'],
-            cache: true,
-          },
-          selector: "#autoComplete3",
-          resultsList: {
-            element: (list, data) => {
-              if (!data.results.length) {
-                // Create "No Results" message element
-                const message = document.createElement("div");
-                // Add class to the created element
-                message.setAttribute("class", "no_result");
-                // Add message text content
-                message.innerHTML = `<span> Не найдено соответствий для "${data.query}"</span>`;
-                // Append message element to the results list
-                list.prepend(message);
-              }
-            },
-            noResults: true,
-            tabSelect: true,
-          },
-          resultItem: {
-            highlight: true
-          },
-          events: {
-            input: {
-              focus: () => {
-                if (autoCompleteJS3.input.value.length) {
-
-                  autoCompleteJS3.start()
-                };
-              }
-            }
-          }
-        });
-
-        autoCompleteJS3.input.addEventListener("selection", function (event) {
-          const feedback = event.detail;
-
-          autoCompleteJS3.input.blur();
-
-          const selection = feedback.selection.value;
-
-          autoCompleteJS3.input.value = selection;
-        });
-      }
-
-    }
-
-    async function mainTrand() {
-
-      setStatusSearch(true)
-
-      const response = await fetch(`https://api.trending-github.com/github/repositories?language=&period=&spokenLanguage=`);
+    if (window.location.pathname === '/') {
 
       const result = await response.json();
 
-      if (result.length === 0) {
-        setStatusSearch(false)
-      } else setArray([...result])
+      if (!cleanupFunction) setLanguage([...result.spokenLanguage])
+
+      const autoCompleteJS1 = new autoComplete({
+        placeHolder: "Выберите свой язык...",
+        data: {
+          src: result.spokenLanguage,
+          cache: true,
+          keys: ['language'],
+        },
+        resultsList: {
+          element: (list, data) => {
+            if (!data.results.length) {
+              // Создание элемента нет результатов
+              const message = document.createElement("div");
+              // Добавление к нему класса
+              message.setAttribute("className", "no_result");
+              // Добавляем текстовое сообщение
+              message.innerHTML = `<span> Не найдено соответствий для "${data.query}"</span>`;
+              // Добавляем в лист результатов
+              list.prepend(message);
+            }
+          },
+          noResults: true,
+          tabSelect: true,
+        },
+        resultItem: {
+          highlight: true,
+        },
+        events: {
+          input: {
+            focus: () => {
+              if (autoCompleteJS1.input.value.length) {
+                autoCompleteJS1.start()
+              };
+            }
+          }
+        }
+      });
+
+      autoCompleteJS1.input.addEventListener("selection", function (event) {
+        const feedback = event.detail;
+
+        autoCompleteJS1.input.blur();
+
+        const selection = feedback.selection.value[feedback.selection.key];
+
+        autoCompleteJS1.input.value = selection;
+      });
+
+      const autoCompleteJS2 = new autoComplete({
+        placeHolder: "Язык программирования...",
+        data: {
+          src: result.language,
+          cache: true,
+        },
+        selector: "#autoComplete2",
+        resultsList: {
+          element: (list, data) => {
+            if (!data.results.length) {
+              // Create "No Results" message element
+              const message = document.createElement("div");
+              // Add class to the created element
+              message.setAttribute("class", "no_result");
+              // Add message text content
+              message.innerHTML = `<span> Не найдено соответствий для "${data.query}"</span>`;
+              // Append message element to the results list
+              list.prepend(message);
+            }
+          },
+          noResults: true,
+          tabSelect: true,
+        },
+        resultItem: {
+          highlight: true
+        },
+        events: {
+          input: {
+            focus: () => {
+              if (autoCompleteJS2.input.value.length) {
+                autoCompleteJS2.start()
+              };
+            }
+          }
+        }
+      });
+
+      autoCompleteJS2.input.addEventListener("selection", function (event) {
+        const feedback = event.detail;
+
+        autoCompleteJS2.input.blur();
+
+        const selection = feedback.selection.value;
+
+        autoCompleteJS2.input.value = selection;
+      });
+
+      const autoCompleteJS3 = new autoComplete({
+        placeHolder: "Время поиска...",
+        data: {
+          src: ['daily', 'weekly', 'monthly'],
+          cache: true,
+        },
+        selector: "#autoComplete3",
+        resultsList: {
+          element: (list, data) => {
+            if (!data.results.length) {
+              // Create "No Results" message element
+              const message = document.createElement("div");
+              // Add class to the created element
+              message.setAttribute("class", "no_result");
+              // Add message text content
+              message.innerHTML = `<span> Не найдено соответствий для "${data.query}"</span>`;
+              // Append message element to the results list
+              list.prepend(message);
+            }
+          },
+          noResults: true,
+          tabSelect: true,
+        },
+        resultItem: {
+          highlight: true
+        },
+        events: {
+          input: {
+            focus: () => {
+              if (autoCompleteJS3.input.value.length) {
+
+                autoCompleteJS3.start()
+              };
+            }
+          }
+        }
+      });
+
+      autoCompleteJS3.input.addEventListener("selection", function (event) {
+        const feedback = event.detail;
+
+        autoCompleteJS3.input.blur();
+
+        const selection = feedback.selection.value;
+
+        autoCompleteJS3.input.value = selection;
+      });
+    }
+
+  }
+
+  useEffect(() => {
+    let cleanupFunction = false;
+
+    spokenLanguageFunc(cleanupFunction);
+  }, [])
+
+  useEffect(() => {
+    let cleanupFunction = false;
+
+    if (!status) {
+
+      mainTrand().then(result => {
+        if (result.length === 0 && !cleanupFunction) setStatusSearch(false)
+
+        if (result.length !== 0 && !cleanupFunction) {
+          dispatch({ type: 'INIT_SEARCH', payload: result })
+          dispatch({ type: 'STATUS_SEARCH', payload: true })
+        }
+      })
 
     }
 
-    spokenLanguageFunc();
+    return () => cleanupFunction = true
 
-    mainTrand()
-
-  }, [])
+  }, [dispatch, status])
 
   return (
     <div id="uiContainer">
@@ -285,6 +322,7 @@ function HomeContent() {
           <div id="containerBtnSearch">
 
             <button onClick={(event) => submitBtn(event)} id="btnSearch" type="submit" className="btn btn-success">Поиск</button>
+            <button onClick={(event) => deleteBtn(event)} type="submit" className="btn btn-delete">Обновить</button>
 
           </div>
         </form>
@@ -293,11 +331,11 @@ function HomeContent() {
 
       <div ref={containerCard} id="containerCard" className="findCard uiInputContainer">
 
-        {array.length === 0 && statusSearch === true ? <DownloadVisual /> : array.map(el => {
+        {search.length === 0 && statusSearch === true ? <DownloadVisual /> : search.map(el => {
           return <OneCard key={el.url} info={el} />
         })}
 
-        {statusSearch === false && array.length === 0 ? <h1>Информация не найдена</h1> : null}
+        {statusSearch === false && search.length === 0 ? <h1>Информация не найдена</h1> : null}
 
       </div>
 
