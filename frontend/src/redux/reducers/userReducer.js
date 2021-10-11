@@ -2,7 +2,9 @@ const initialState = {
   isAuth: false,
   id: null,
   email: null,
-  interes: []
+  interes: [],
+  search: [],
+  statusSearch: false
 }
 
 function userReducer(state = initialState, action) {
@@ -21,6 +23,10 @@ function userReducer(state = initialState, action) {
       const interes = [...state.interes]
       interes.splice(findIndex, 1)
       return { ...state, interes: [...interes] }
+    case 'INIT_SEARCH':
+      return { ...state, search: [...action.payload] }
+    case 'STATUS_SEARCH':
+      return { ...state, statusSearch: action.payload }
     default:
       return state;
   }
