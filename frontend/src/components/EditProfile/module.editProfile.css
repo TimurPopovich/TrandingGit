@@ -68,7 +68,7 @@
   border-radius: 12px;
   left: 0;
   top: 7px;
-  color: #999;
+  color: rgb(49, 45, 45);
   background-color: #fff;
   z-index: 10;
   transition: transform 150ms ease-out, font-size 150ms ease-out;

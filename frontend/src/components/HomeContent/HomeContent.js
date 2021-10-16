@@ -284,7 +284,7 @@ function HomeContent() {
     <div id="uiContainer">
 
       <div className="textContent is-center">
-        <h1>
+        <h1 className='h1-main'>
           Какие сейчас тренды в github?
         </h1>
       </div>

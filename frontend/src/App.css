@@ -11,6 +11,10 @@ body{
   width: 100%;
   overflow-y:scroll;
 }
+body.dark{
+  background-color: black;
+  color: white;
+  }
 hr{
   border: none;
   background-color: #11101d;

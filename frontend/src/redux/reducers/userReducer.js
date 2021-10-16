@@ -4,7 +4,7 @@ const initialState = {
   email: null,
   interes: [],
   search: [],
-  statusSearch: false
+  statusSearch: false,
 }
 
 function userReducer(state = initialState, action) {

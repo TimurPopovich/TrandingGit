@@ -71,12 +71,12 @@ function EditProfile() {
   }
 
   function handleTextFocus2() {
-    setActive(true);
+    setActive2(true);
   }
 
   function handleTextBlur2(text) {
     if (text === '') {
-      setActive(false);
+      setActive2(false);
     }
   }
 

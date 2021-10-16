@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
+import Theme from '../Theme/Theme'
 import './module.sideBar.css'
 
 function Sidebar() {
@@ -83,6 +84,7 @@ function Sidebar() {
           </>
         }
       </ul>
+      <Theme />
       {user.isAuth ?
         <div className='profile_content'>
           <div className='profile'>

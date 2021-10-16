@@ -1,0 +1,51 @@
+.theme {
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 80px;
+  margin-left: 10px;
+}
+.theme svg.dark path {
+  color: white;
+  fill: var(--dark);
+}
+.theme svg.yellow path {
+  color: white;
+  fill: var(--yellow);
+}
+body.dark .inputAll{
+  color:white;
+  background-color: black;
+}
+ul li{
+  cursor: pointer;
+}
+ul{
+  list-style-type: none;
+}
+body.dark .cardBody {
+  box-shadow: 0px 0px 6px 1px white;
+  border-radius: 4px;
+}
+.sidebar .theme{
+  opacity: 1;
+  transition: all 0.6s ease;
+}
+.sidebar.active .theme{
+  margin-left: 90px;
+}
+body.dark #editDiv{
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0 0 0 1px #d4d4d5, 0 2px 0 0 #21ba45, 0 1px 3px 0 #d4d4d5;
+}
+body.dark .form-control{
+  background-color: black;
+  color: white;
+}
+body.dark .form-label{
+  background-color: black;
+  color: white;
+}
+body.dark hr{
+  background-color: white;
+}
