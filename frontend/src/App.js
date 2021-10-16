@@ -12,7 +12,6 @@ import SavedTrand from './components/SavedTrand/SavedTrand';
 import EditProfile from './components/EditProfile/EditProfile';
 import NotFound from './components/NotFound/NotFound'
 import { AppContext } from './context/context';
-import Theme from './components/Theme/Theme';
 
 function App() {
 

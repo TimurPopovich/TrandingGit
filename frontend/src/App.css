@@ -12,7 +12,7 @@ body{
   overflow-y:scroll;
 }
 body.dark{
-  background-color: black;
+  background-color: #1b1c23;
   color: white;
   }
 hr{
