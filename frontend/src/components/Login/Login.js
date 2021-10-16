@@ -41,8 +41,8 @@ function Login() {
       <h1 id='logH1'>Войти</h1>
       <div id="wrapper">
         <form onSubmit={(event) => { loginHendler(event) }} id="signin" method="" action="">
-          <input type="text" id="user" name="email" placeholder="Почта" />
-          <input type="password" id="pass" name="password" placeholder="Пароль" />
+          <input type="text" id="user" name="email" placeholder="Почта" required />
+          <input type="password" id="pass" name="password" placeholder="Пароль" required />
           <button type="submit">&#xf0da;</button>
         </form>
       </div>

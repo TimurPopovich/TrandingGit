@@ -48,9 +48,9 @@ function Register() {
       <h1 id='logH1'>Регистрация</h1>
       <div id="wrapper">
         <form onSubmit={(event) => registerHendler(event)} id="signin" method="" action="" autoComplete="off">
-          <input type="text" id="user" name="email" placeholder="Почта" />
-          <input type="password" id="pass" name="pass" placeholder="Пароль" />
-          <input type="password" id="pass2" name="pass2" placeholder="Подтвердите пароль" />
+          <input type="text" id="user" name="email" placeholder="Почта" required />
+          <input type="password" id="pass" name="pass" placeholder="Пароль" required />
+          <input type="password" id="pass2" name="pass2" placeholder="Подтвердите пароль" required />
           <button id='btnReg' type="submit">&#xf0da;</button>
         </form>
       </div>

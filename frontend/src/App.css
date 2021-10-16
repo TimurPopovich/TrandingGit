@@ -31,6 +31,7 @@ hr{
   width: calc(100% - 240px);
   left: 240px;
 }
+
 /* === Sign in Form === */
 #logH1{
   color: #11101d;
@@ -217,12 +218,6 @@ input:-webkit-autofill {
       width: 100%;
     }
 }
-
-
-
-
-
-
 
 
 

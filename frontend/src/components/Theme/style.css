@@ -61,3 +61,18 @@ body.dark .cardNick{
   word-wrap: break-word;
   overflow-x:hidden;
 }
+body.dark #logH1{
+  color: white;
+}
+body.dark input:-webkit-autofill {
+
+  box-shadow: 0 0 0px 1000px #1b1c23 inset;
+}
+body.dark #signin input[type="text"]{
+  color: white;
+  box-shadow: 0 0 0px 1000px #1b1c23 inset;
+}
+body.dark #signin input[type="password"]{
+  color: white;
+  box-shadow: 0 0 0px 1000px #1b1c23 inset;
+}
