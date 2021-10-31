@@ -1,3 +1,5 @@
+import { saveCard } from "../slices/userSlice"
+
 export default function savedCardThunk(info, user) {
   return (dispatch) => {
     fetch('/card', {
@@ -13,7 +15,7 @@ export default function savedCardThunk(info, user) {
       .then(data => data.json())
       .then(data => {
         if (data.message) {
-          dispatch({ type: 'SAVE_CARD', payload: info })
+          dispatch(saveCard(info))
         }
       })
       .catch(err => console.log(err))

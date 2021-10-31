@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
+import { userLogout } from '../../redux/slices/userSlice'
 import Theme from '../Theme/Theme'
 import './module.sideBar.css'
 
@@ -26,7 +27,7 @@ function Sidebar() {
   }
 
   const logOut = () => {
-    dispatch({ type: "USER_LOGOUT" })
+    dispatch(userLogout())
     history.push('/')
   }
 

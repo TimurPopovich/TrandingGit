@@ -1,3 +1,5 @@
+import { editUser } from "../slices/userSlice";
+
 export const editProfileThunk = (info, history, setModalActive, setModalInfo) => {
   return (dispatch) => {
     fetch('/user', {
@@ -30,7 +32,7 @@ export const editProfileThunk = (info, history, setModalActive, setModalInfo) =>
           return data
         }
       })
-      .then((data) => dispatch({ type: 'EDIT_USER', payload: info.email }))
+      .then((data) => dispatch(editUser(info.email)))
       .catch((error) => {
         alert(`${error.message}`)
       });

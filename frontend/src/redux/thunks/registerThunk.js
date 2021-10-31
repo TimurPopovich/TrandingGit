@@ -1,3 +1,5 @@
+import { initUser } from "../slices/userSlice"
+
 export const registerThunk = (newUser) => {
   return function (dispatch) {
     fetch('/register', {
@@ -13,7 +15,7 @@ export const registerThunk = (newUser) => {
         } else return data
 
       })
-      .then(data => dispatch({ type: 'INIT_USER', payload: data }))
+      .then(data => dispatch(initUser(data)))
       .then(data => localStorage.setItem('token', data.payload.token))
       .catch((error) => console.log(error))
   }

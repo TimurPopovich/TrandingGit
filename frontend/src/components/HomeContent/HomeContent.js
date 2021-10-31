@@ -4,6 +4,7 @@ import DownloadVisual from '../DownloadVisual/DownloadVisual'
 import OneCard from '../OneCard/OneCard'
 import { useDispatch, useSelector } from 'react-redux'
 import './module.homeContent.css'
+import { initSearch, statusSearch } from '../../redux/slices/userSlice'
 
 function HomeContent() {
 
@@ -12,11 +13,11 @@ function HomeContent() {
   const languagePrograming = useRef()
   const period = useRef()
 
-  const search = useSelector(state => state.user.search)
-  const status = useSelector(state => state.user.statusSearch)
+  const search = useSelector(state => state.user?.search)
+  const status = useSelector(state => state.user?.statusSearch)
   const dispatch = useDispatch()
 
-  const [statusSearch, setStatusSearch] = useState(true)
+  const [statusSearchLocal, setStatusSearchLocal] = useState(true)
   const [language, setLanguage] = useState([])
 
   async function findRepositories(languagePrograming = 'JavaScript', period = 'deily', spokenLanguage = 'ru') {
@@ -27,14 +28,14 @@ function HomeContent() {
     const result = await response.json();
 
     if (result.length === 0 || result === 'Unknown language') {
-      setStatusSearch(false)
-    } else dispatch({ type: 'INIT_SEARCH', payload: result })
+      setStatusSearchLocal(false)
+    } else dispatch(initSearch(result))
 
   }
 
   async function mainTrand() {
 
-    setStatusSearch(true)
+    setStatusSearchLocal(true)
 
     const response = await fetch(`https://api.trending-github.com/github/repositories?language=&period=&spokenLanguage=`);
 
@@ -45,8 +46,8 @@ function HomeContent() {
 
   function submitBtn(event) {
 
-    setStatusSearch(true)
-    dispatch({ type: 'INIT_SEARCH', payload: [] })
+    setStatusSearchLocal(true)
+    dispatch(initSearch([]))
 
     event.preventDefault();
 
@@ -91,12 +92,12 @@ function HomeContent() {
     spokenLanguageSymbol.current.value = ''
 
 
-    dispatch({ type: 'INIT_SEARCH', payload: [] })
+    dispatch(initSearch([]))
 
     const result = await mainTrand()
 
-    if (result.length !== 0) dispatch({ type: 'INIT_SEARCH', payload: result })
-    if (result.length === 0) setStatusSearch(false)
+    if (result.length !== 0) dispatch(initSearch(result))
+    if (result.length === 0) setStatusSearchLocal(false)
   }
 
   async function spokenLanguageFunc(cleanupFunction) {
@@ -266,11 +267,11 @@ function HomeContent() {
     if (!status) {
 
       mainTrand().then(result => {
-        if (result.length === 0 && !cleanupFunction) setStatusSearch(false)
+        if (result.length === 0 && !cleanupFunction) setStatusSearchLocal(false)
 
         if (result.length !== 0 && !cleanupFunction) {
-          dispatch({ type: 'INIT_SEARCH', payload: result })
-          dispatch({ type: 'STATUS_SEARCH', payload: true })
+          dispatch(initSearch(result))
+          dispatch(statusSearch(true))
         }
       })
 
@@ -278,7 +279,7 @@ function HomeContent() {
 
     return () => cleanupFunction = true
 
-  }, [dispatch, status])
+  }, [dispatch, status, statusSearchLocal])
 
   return (
     <div id="uiContainer">
@@ -331,11 +332,11 @@ function HomeContent() {
 
       <div ref={containerCard} id="containerCard" className="findCard uiInputContainer">
 
-        {search.length === 0 && statusSearch === true ? <DownloadVisual /> : search.map(el => {
+        {search.length === 0 && statusSearchLocal === true ? <DownloadVisual /> : search.map(el => {
           return <OneCard key={el.url} info={el} />
         })}
 
-        {statusSearch === false && search.length === 0 ? <h1>Информация не найдена</h1> : null}
+        {statusSearchLocal === false && search.length === 0 ? <h1>Информация не найдена</h1> : null}
 
       </div>
 

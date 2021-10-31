@@ -1,3 +1,5 @@
+import { deleteCard } from "../slices/userSlice"
+
 export default function deleteCardThunk(info, user) {
   return (dispatch) => {
     fetch('/card', {
@@ -13,7 +15,7 @@ export default function deleteCardThunk(info, user) {
       .then(data => data.json())
       .then(data => {
         if (data.message) {
-          dispatch({ type: 'DELETE_CARD', payload: info })
+          dispatch(deleteCard(info))
         }
       })
       .catch(err => console.log(err))
